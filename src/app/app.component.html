@@ -1,4 +1,10 @@
 <div class="flashs">
   <!--*ngFor est une instruction directives qui parcours tous les elements d'une liste-->
-  <app-flash *ngFor="let flash of flashs; trackBy: trackByFlashId"[flash]="flash" (onToggleCard)="handleToggleCard($event)" (onDelete)="handleDelete($event)"(onEdit)="handleEdit($event)" (onRememberedChange)="handleRemenberedChange($event,$event)"></app-flash>
+  <app-flash *ngFor="let flash of flashs; trackBy: trackByFlashId"[flash]="flash"
+   (onToggleCard)="handleToggleCard($event)"
+   (onDelete)="handleDelete($event)"
+   (onEdit)="handleEdit($event)"
+   (onCorrect)="handleCorrect($event)"
+   (onIncorrect)="handleIncorrect($event)"
+   ></app-flash>
 </div>

@@ -60,7 +60,7 @@ export class AppComponent {
     for(let i=0; i<this.flashs.length; i++){
       if(this.flashs[i].id==id){
         const flashId = this.flashs[i];
-        this.flashs.splice(flashId.id,1);
+        this.flashs.splice(i,1);
       }
     }
 
@@ -72,10 +72,16 @@ export class AppComponent {
    // TODO: We will add editing logic after adding the form
 
   }
-  handleRemenberedChange(id : number, flag : 'correct'|'incorrect'){
+  handleCorrect(id: number){
     const flash = this.flashs.find(flash => flash.id === id);
     if(flash?.show==true){
-      flash.remembered = flag;
+      flash.remembered='correct';
+    }
+  }
+  handleIncorrect(id: number){
+    const flash = this.flashs.find(flash => flash.id === id);
+    if(flash?.show==true){
+      flash.remembered='incorrect';
     }
   }
 }

@@ -28,7 +28,8 @@ export class FlashComponent implements OnInit {
   //On defini un ecouter d'action sur les mots
   @Output() onDelete=new EventEmitter();
   @Output() onEdit=new EventEmitter();
-  @Output() onRememberedChange=new EventEmitter();
+  @Output() onCorrect=new EventEmitter();
+  @Output() onIncorrect=new EventEmitter();
   /*On utiliser chaque mot pour l'appel de la fonction
   correspondante*/
   deleteFlash(){
@@ -38,17 +39,11 @@ export class FlashComponent implements OnInit {
     this.onEdit.emit(this.flash.id);
   }
   markCorrect(){
-    this.onRememberedChange.emit({
-      id: this.flash.id,
-      flag: 'correct',
-      });
+    this.onCorrect.emit(this.flash.id);
   }
 
   markIncorrect() {
-    this.onRememberedChange.emit({
-    id: this.flash.id,
-    flag: 'incorrect',
-    });
+    this.onIncorrect.emit(this.flash.id);
     }
 
 }

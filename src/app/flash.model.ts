@@ -4,4 +4,4 @@ export type IFlash = {
   show: boolean;
   id: number;
   remembered?: 'correct' | 'incorrect';
-  }
+}
