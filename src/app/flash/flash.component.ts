@@ -4,7 +4,7 @@ import {IFlash } from '../flash.model'
 @Component({
   selector: 'app-flash',
   templateUrl: './flash.component.html',
-  styleUrls: ['./flash.component.css']
+  styleUrls: ['./flash.component.css'],
 })
 export class FlashComponent implements OnInit {
 
@@ -25,5 +25,30 @@ export class FlashComponent implements OnInit {
   toggleCard() {
     this.onToggleCard.emit(this.flash.id);
   }
+  //On defini un ecouter d'action sur les mots
+  @Output() onDelete=new EventEmitter();
+  @Output() onEdit=new EventEmitter();
+  @Output() onRememberedChange=new EventEmitter();
+  /*On utiliser chaque mot pour l'appel de la fonction
+  correspondante*/
+  deleteFlash(){
+    this.onDelete.emit(this.flash.id);
+  }
+  editFlash(){
+    this.onEdit.emit(this.flash.id);
+  }
+  markCorrect(){
+    this.onRememberedChange.emit({
+      id: this.flash.id,
+      flag: 'correct',
+      });
+  }
+
+  markIncorrect() {
+    this.onRememberedChange.emit({
+    id: this.flash.id,
+    flag: 'incorrect',
+    });
+    }
 
 }

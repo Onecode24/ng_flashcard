@@ -48,7 +48,34 @@ export class AppComponent {
 
   handleToggleCard(id: number) {
    const flash = this.flashs.find(flash => flash.id === id);
-   console.log(flash?.show);
+   if(flash?.show==true){
+     flash.show=false;
+   }else if(flash?.show==false){
+    flash.show=true;
+   }
+  /* editing =false;
+   editingId: number;*/
+  }
+  handleDelete(id : number){
+    for(let i=0; i<this.flashs.length; i++){
+      if(this.flashs[i].id==id){
+        const flashId = this.flashs[i];
+        this.flashs.splice(flashId.id,1);
+      }
+    }
 
+  }
+  handleEdit(id : number){
+    /* editing =true;
+   editingId=id;*/
+
+   // TODO: We will add editing logic after adding the form
+
+  }
+  handleRemenberedChange(id : number, flag : 'correct'|'incorrect'){
+    const flash = this.flashs.find(flash => flash.id === id);
+    if(flash?.show==true){
+      flash.remembered = flag;
+    }
   }
 }
